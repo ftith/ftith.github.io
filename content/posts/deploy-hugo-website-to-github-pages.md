@@ -31,7 +31,7 @@ git submodule add --depth=1 https://github.com/adityatelange/hugo-PaperMod.git t
 git submodule update --init --recursive
 
 # add theme name to hugo configuration file
-echo "theme = 'papermod'" >> hugo.toml
+echo "theme = 'PaperMod'" >> hugo.toml
 ```
 ### Start the server locally
 ```
