@@ -1,8 +1,6 @@
 +++
 title = 'Deploy hugo website to Github Pages'
 date = 2023-11-28T21:29:31+01:00
-
-showToc = true
 +++
 
 Hey! My first post is a _dog eats dog_ post: I will give you the commands I used to deploy my blog using hugo framework to github pages.

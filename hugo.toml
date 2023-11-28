@@ -1,4 +1,12 @@
 baseURL = 'https://ftith.github.io/'
 languageCode = 'en-us'
-title = ''
+title = 'Home'
 theme = 'PaperMod'
+paginate = 5
+
+[params]
+ShowPostNavLinks = true
+ShowBreadCrumbs = true
+ShowCodeCopyButtons = false
+ShowToc = true
+
