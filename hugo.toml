@@ -1,0 +1,4 @@
+baseURL = 'https://ftith.github.io/'
+languageCode = 'en-us'
+title = ''
+theme = 'papermod'
