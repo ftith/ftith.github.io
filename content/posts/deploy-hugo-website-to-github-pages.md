@@ -9,6 +9,9 @@ Sources:
 - [Quick start on official Hugo website](https://gohugo.io/getting-started/quick-start/)
 - [Papermod Theme Installation](https://adityatelange.github.io/hugo-PaperMod/posts/papermod/papermod-installation)
 ## Prerequisites
+- [git](https://git-scm.com/downloads)
+- [hugo cli](https://gohugo.io)
+
 ## Local setup
 ### Create a new hugo website
 This command will generate a template for hugo project. By default it will use .toml extension for the configuration file. You can also use .yaml extension by adding `--config hugo.yaml` to the first command.
