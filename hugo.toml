@@ -15,6 +15,12 @@ Title = "Hi there 👋"
 Content = "Welcome to my blog. I am a DevOps Engineer working for a video game company."
 
 [[menu.main]]
+identifier = "archives"
+name = "Archives"
+url = "/archives/"
+weight = 20
+
+[[menu.main]]
 identifier = "search"
 name = "Search"
 url = "/search/"
