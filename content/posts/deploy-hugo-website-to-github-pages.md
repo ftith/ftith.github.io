@@ -1,6 +1,11 @@
 +++
 title = 'Deploy hugo website to Github Pages'
 date = 2023-11-28T21:29:31+01:00
+ShowReadingTime = true
+[editPost]
+URL = "https://github.com/ftith/ftith.github.io/edit/main/content"
+Text = "Suggest Changes"
+appendFilePath = true
 +++
 
 Hey! My first post is a _dog eats dog_ post: I will give you the commands I used to deploy my blog using hugo framework to github pages.

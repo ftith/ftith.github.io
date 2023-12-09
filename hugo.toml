@@ -9,6 +9,7 @@ ShowPostNavLinks = true
 ShowBreadCrumbs = true
 ShowCodeCopyButtons = false
 ShowToc = true
+githubUrl = "https://github.com/ftith/ftith.github.io"
 
 [params.homeInfoParams]
 Title = "Hi there 👋"
