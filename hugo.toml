@@ -1,6 +1,6 @@
 baseURL = 'https://ftith.github.io/'
 languageCode = 'en-us'
-title = 'Home'
+title = 'f.t'
 theme = 'PaperMod'
 paginate = 5
 
@@ -10,3 +10,14 @@ ShowBreadCrumbs = true
 ShowCodeCopyButtons = false
 ShowToc = true
 
+[params.homeInfoParams]
+Title = "Hi there 👋"
+Content = "Welcome to my blog. I am a DevOps Engineer working for a video game company."
+
+[[menu.main]]
+identifier = "search"
+name = "Search"
+url = "/search/"
+weight = 20
+[outputs]
+home = [ "HTML", "RSS", "JSON" ]
