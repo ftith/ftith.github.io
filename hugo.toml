@@ -7,7 +7,7 @@ paginate = 5
 [params]
 ShowPostNavLinks = true
 ShowBreadCrumbs = true
-ShowCodeCopyButtons = false
+ShowCodeCopyButtons = true
 ShowToc = true
 githubUrl = "https://github.com/ftith/ftith.github.io"
 
@@ -28,3 +28,7 @@ url = "/search/"
 weight = 20
 [outputs]
 home = [ "HTML", "RSS", "JSON" ]
+
+[services]
+  [services.googleAnalytics]
+    ID = 'G-V672X69S59'
