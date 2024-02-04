@@ -15,6 +15,12 @@ githubUrl = "https://github.com/ftith/ftith.github.io"
 Title = "Hi there 👋"
 Content = "Welcome to my blog. I am a DevOps Engineer working for a video game company."
 
+#[[menu.main]]
+#identifier = "presentations"
+#name = "Presentations"
+#url = "/presentations/"
+#weight = 20
+
 [[menu.main]]
 identifier = "archives"
 name = "Archives"
