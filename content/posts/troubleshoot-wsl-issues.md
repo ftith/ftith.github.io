@@ -75,3 +75,18 @@ And check docker status again with
   sudo service docker status
 ```
 Source: https://github.com/docker/for-linux/issues/1406
+
+
+
+## Disk mount to windows disk failure
+### Symptoms:
+```
+/mnt/d/# ls
+ls: cannot open directory '.': Input/output error
+```
+wslhost.exe process can sometimes die silently. (due to docker desktop for instance)
+### Solution: 
+```
+wsl.exe --shutdown
+```
+
