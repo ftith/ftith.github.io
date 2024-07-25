@@ -24,5 +24,12 @@ ssh-copy-id -i .ssh/id_ed25519.pub <server_name>
 ssh -i ~/.ssh/id_ed25519 <user>@<server_name>
 ```
 
+## Avoid retyping passphrase on each new connection
+```
+eval $(ssh-agent -s)
+ssh-add /mnt/c/Users/f.tith/.ssh/id_ed25519
+```
+It is only valid in one session. On terminal kill, you'll need to rerun those commands.
+
 ## Sources
 https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#generating-a-new-ssh-key
