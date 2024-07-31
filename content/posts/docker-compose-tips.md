@@ -25,7 +25,7 @@ docker compose down -v
 ```
 
 ## YAML anchor and aliases
-
+### Simple 
 ```
 x-common_env: &common_env
   env_file:
@@ -39,6 +39,35 @@ services:
     image: nginx:1.27.0-bookworm
 ```
 
+### Common anchors with multiple docker compose files
+Due to this bug: https://github.com/docker/compose/issues/5621, you'll need a workaround to fix this issue. 
+Given those 2 files:
+
+`db.yml`
+```
+x-restart_pol: &restart_pol
+  restart: always
+services:
+  db:
+    <<: *restart_pol
+    image: postgres:16.3
+```
+
+`app.yml`
+```
+services:
+  frontend:
+    <<: *restart_pol
+    image: nginx:1.27.0-bookworm
+```
+Instead of using this command:
+```
+docker compose -f db.yml -f app.yml up -d
+```
+you can use: 
+```
+tail -n +2 app.yml | cat db.yml - | docker-compose.yml - up -d
+```
 ## Build on the fly
 ```
 services:
