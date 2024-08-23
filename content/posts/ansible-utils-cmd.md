@@ -1,7 +1,6 @@
 +++
 title = 'Ansible Utils Commands'
 date = 2024-08-23T16:18:08+01:00
-draft = true
 ShowReadingTime = true
 tags = ['ansible']
 [editPost]
@@ -92,7 +91,7 @@ vm05 | SUCCESS => {
     "changed": false,
     "ping": "pong"
 }
-vm05 | SUCCESS => {
+vm06 | SUCCESS => {
     "changed": false,
     "ping": "pong"
 }
