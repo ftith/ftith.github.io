@@ -1,4 +1,9 @@
 # Personal github page
+## Install theme
+Pull PaperMod theme submodule after existing clone (https://github.com/adityatelange/hugo-PaperMod/wiki/Installation)
+```
+git submodule update --init --recursive
+```
 ## Local commands
 ```
 # Start server locally
