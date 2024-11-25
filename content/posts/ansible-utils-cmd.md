@@ -101,9 +101,23 @@ $ ansible -m shell -a "echo 'hello world'" vm01
 vm01 | CHANGED | rc=0 >>
 hello world
 
-# print an encrypted variable
-$ ansible -m debug -a var=encrypted_var_name localhost --vault-password-file vault_pass.txt
-localhost | SUCCESS => {
-    "encrypted_var_name": "verystrongpassword"
-}
+```
+
+## Encryption/Decryption using ansible-vault
+Documentation: https://docs.ansible.com/ansible/latest/cli/ansible-vault.html
+### Using vault password file
+```
+# File Encryption
+ansible-vault encrypt --vault-password-file ~/.pass.txt roles/ssl/files/private.key
+# File Decryption
+ansible-vault decrypt --vault-password-file ~/.pass.txt roles/ssl/files/private.key
+
+
+# Variable Encryption
+ansible-vault encrypt_string --vault-password-file ~/.pass.txt '<string_to_encrypt>' --name '<variable_name>'
+e.g.
+ansible-vault encrypt_string --vault-password-file ~/.pass.txt 'verystrongpassword' --name 'encrypted_var_name'
+# Print variable Decryption
+ansible -m debug -a var=encrypted_var_name localhost --vault-password-file ~/.pass.txt
+
 ```
