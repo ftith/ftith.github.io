@@ -31,9 +31,17 @@ Unfortunately, on my last macOS update, steamlink kept crashing after the update
     - Major issue on gaming: https://github.com/rustdesk/rustdesk/issues/2525
 - **Windows Remote Desktop**
   - advantage: Coming with Windows so no additional setup needed (if you have professional Windows)
-  - drawback: 
-- **Moonlight**
-
+  - drawbacks: 
+    - RDP server only comes with Windows Professional. If you have a Home edition, you'll need to do additional setup to enable it.
+    - Performance issues on gaming
+    - WAN setup is not advised
+- **Sunshine(server) / Moonlight(client)**
+  - advantages: 
+    - open-source
+    - self-host
+    - can work on LAN and WAN
+  - drawbacks: 
+    - Only works with Nvidia graphic cards
 Finally, I wanted my computer to be able to go to sleep to save energy and be able to wake it up remotely outside LAN. I needed a solution to send magic packet (**wake on lan**) _safely_ so **Wireguard VPN** comes in action. 
 
 
