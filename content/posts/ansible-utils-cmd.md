@@ -84,8 +84,8 @@ $ ansible --list-hosts lan
 
 ## Run module on specific host or group
 e.g.
+### Ping all hosts of group wan
 ```
-# ping all hosts of group 'wan'
 $ ansible -m ping wan
 vm05 | SUCCESS => {
     "changed": false,
@@ -95,12 +95,23 @@ vm06 | SUCCESS => {
     "changed": false,
     "ping": "pong"
 }
-
-# execute 'echo world' on host vm01
+```
+### execute 'echo world' on host vm01
+```
 $ ansible -m shell -a "echo 'hello world'" vm01
 vm01 | CHANGED | rc=0 >>
 hello world
 
+```
+
+### Generate a template locally 
+Very useful for local debug and avoiding additional code in your playbook or task files in role.
+```
+# Generate the file /tmp/prometheus.yml from template roles/prometheus/templates/prometheus.yml
+$ ansible [--vault-password-file=~/.pass.txt] -m template -a "src=roles/prometheus/templates/prometheus.yml dest=/tmp/prometheus.yml" localhost
+
+# Check the generated file locally
+$ promtool check config /tmp/prometheus.yml
 ```
 
 ## Encryption/Decryption using ansible-vault
