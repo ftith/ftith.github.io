@@ -16,15 +16,14 @@ appendFilePath = true
 
 # Create an Alerting Rule in Prometheus
 
-### PromQL expression to detect missing ùountpoints
+### PromQL expression to detect missing mountpoints
 Make sure to test your query on `/explore` tab. 
 
 You can use metric `node_filesystem_avail_bytes` to detect specific mountpoint (e.g. `/mnt/data`) on specific instance (e.g `vm-name:9100`):
 ```
 node_filesystem_avail_bytes{instance="vm-name:9100",mountpoint="/mnt/data"}
 ```
-> **⚠ Any missing mountpoints for an instance might be due to default regexp value of the argument `--collector.filesystem.ignored-mount-points="^/(dev|proc|run|sys|mnt|media|var/lib/docker/.+)($|/)"`** 
-
+> ⚠ Any missing mountpoints for an instance might be due to default regexp value of the argument `--collector.filesystem.ignored-mount-points="^/(dev|proc|run|sys|mnt|media|var/lib/docker/.+)($|/)"`, so you might just remove the path you need in regexp value
 If you need to detect missing metric, you can use vector `absent()`
 
 > ⚠ vector `absent()` cannot be used for multiple instances promQL regexp (or at least not the way you are expected). 
@@ -34,7 +33,7 @@ If you need to detect missing metric, you can use vector `absent()`
 > ```
 > you'll need to use `or` operator
 > ```
-> absent(node_filesystem_avail_bytes{instance="vm-name:9100",mountpoint="/mnt/data"}) or absent(node_filesystem_avail_bytes{instance~="vm-name2:9100|vm-name2:9100",mountpoint="/mnt/data"})
+> absent(node_filesystem_avail_bytes{instance="vm-name:9100",mountpoint="/mnt/data"}) or absent(node_filesystem_avail_bytes{instance="vm-name2:9100",mountpoint="/mnt/data"})
 > ```
 
 ### Alert rule
