@@ -24,6 +24,7 @@ You can use metric `node_filesystem_avail_bytes` to detect specific mountpoint (
 node_filesystem_avail_bytes{instance="vm-name:9100",mountpoint="/mnt/data"}
 ```
 > ⚠ Any missing mountpoints for an instance might be due to default regexp value of the argument `--collector.filesystem.ignored-mount-points="^/(dev|proc|run|sys|mnt|media|var/lib/docker/.+)($|/)"`, so you might just remove the path you need in regexp value
+
 If you need to detect missing metric, you can use vector `absent()`
 
 > ⚠ vector `absent()` cannot be used for multiple instances promQL regexp (or at least not the way you are expected). 
