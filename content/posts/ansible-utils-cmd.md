@@ -80,6 +80,14 @@ $ ansible --list-hosts lan
     vm02
     vm03
     vm04
+
+# exclude a group
+$ ansible --list-hosts 'linux:!wan'
+  hosts (4):
+    vm01
+    vm02
+    vm03
+    vm04
 ```
 
 ## Run module on specific host or group
