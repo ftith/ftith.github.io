@@ -58,3 +58,4 @@ RUN --mount=type=secret,id=curl \
 ## Sources
 - https://stackoverflow.com/questions/56284902/how-to-add-credentials-to-docker-add-command
 - https://xanderx.com/post/using-netrc-with-curl-for-automatic-authorisation/
+- https://docs.docker.com/build/ci/github-actions/secrets/
