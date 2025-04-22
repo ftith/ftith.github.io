@@ -53,7 +53,7 @@ Docker command in your dockerfile:
 RUN --mount=type=secret,id=curl \
     curl -o /tmp/package.json --netrc-file /run/secrets/curl https://raw.githubusercontent.com/cplee/github-actions-demo/refs/heads/master/package.json
 ```
-
+**⚠ Never use clear credentials in your Dockerfile (e.g. `curl -u user:pwd https://raw.githubusercontent.com/cplee/github-actions-demo/refs/heads/master/package.json`), since anyone can read them with command ` docker history --no-trunc <image_name>`** 
 
 ## Sources
 - https://stackoverflow.com/questions/56284902/how-to-add-credentials-to-docker-add-command
