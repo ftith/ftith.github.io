@@ -98,6 +98,52 @@ your-project 0.1.0 => 0.2.0
 ```
 and pushing your updated `pyproject.toml`.
 
+Using github actions, you can specify the version to install:
+```
+name: Package
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - "master"
+
+jobs:
+  build:
+    name: "Build and publish package"
+    runs-on: ubuntu-latest
+    outputs: ### <<<<< add this to pass version information between jobs
+      version: ${{ steps.get_version.outputs.version }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # for git-versionning
+      - name: Install the latest version of uv
+        uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+      - name: Get version ### <<<<< add this to pass version information between jobs
+        id: get_version
+        run: |
+          echo "version=$(uvx --from=toml-cli toml get --toml-path=pyproject.toml project.version)" >> $GITHUB_OUTPUT
+      - name: Build dist
+        run: uv build
+      - name: Publish packages
+        run: uv publish --token ${{ secrets.TWINE_PASSWORD }}
+  deploy:
+    needs:
+      - build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to the server
+        uses: https://github.com/appleboy/ssh-action@master
+        with:
+          host: ${{ vars.HOST_MACHINE }}
+          username: ${{ secrets.HOST_SSH_USER }}
+          key: ${{ secrets.HOST_SSH_KEY }}
+          script: |
+            pip install --force-reinstall your-project==${{ needs.build.outputs.version }}
+```
+
 #### - Dynamic versioning
 In `pyproject.toml` add: 
 ```
