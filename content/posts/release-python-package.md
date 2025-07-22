@@ -8,6 +8,7 @@ URL = "https://github.com/ftith/ftith.github.io/edit/main/content"
 Text = "Suggest Changes"
 appendFilePath = true
 +++
+
 ## Tag and release python package with uv and GitHub Actions workflows
 The goal of this article is to build and release python package using [uv](https://docs.astral.sh/uv/guides/package/) (for building and publishing) and [github actions](https://docs.github.com/en/actions/get-started/understanding-github-actions) (for automation).
 
