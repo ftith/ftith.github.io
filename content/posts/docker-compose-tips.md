@@ -85,5 +85,18 @@ command `docker-compose -f Composes\docker-compose.yml up --build`
 docker-compose -f Composes\docker-compose.yml -f Composes\docker-compose-aws.yml up
 ```
 
+
+## Multiple or optional environment file (env_file)
+Since `Docker Compose version 2.24.0`, you can use multiple environments files (precedence is in order of decleration), or optional environment files using the `required` option.
+```
+services:
+  service-name:
+    env_file:
+    - path: ./default.env
+    - path: ./override.env
+      required: false # default is true
+```
+
 ## Source
 - https://docs.docker.com/compose/compose-file/10-fragments/
+- https://docs.docker.com/compose/how-tos/environment-variables/set-environment-variables/#additional-information
