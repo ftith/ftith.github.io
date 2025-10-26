@@ -1,7 +1,6 @@
 +++
 title = 'Git Submodules'
 date = 2025-10-25T18:58:31+02:00
-draft = true
 tags = ['git', 'submodule']
 ShowReadingTime = true
 [editPost]

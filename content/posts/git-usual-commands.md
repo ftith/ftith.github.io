@@ -2,7 +2,7 @@
 title = 'Git Usual Commands'
 date = 2024-02-04T11:34:09+01:00
 ShowReadingTime = true
-tags = ['git']
+tags = ['git', 'rebase']
 [editPost]
 URL = "https://github.com/ftith/ftith.github.io/edit/main/content"
 Text = "Suggest Changes"
