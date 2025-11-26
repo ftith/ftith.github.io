@@ -78,12 +78,18 @@ git reset --soft HEAD~1
 
 ## "Rewrite" history
 ### Change a single commit (`--fixup` option)
+#### Specific commit
 ```
 git add -u
 git log --oneline -3
 git commit --fixup c53146d
 git rebase -i --autosquash HEAD~3
 git push --force-with-lease
+```
+
+#### Last commit
+```
+git add -u && git commit --fixup $(git log --oneline -n1 --pretty=format:"%h")
 ```
 
 ### Reorder commits
