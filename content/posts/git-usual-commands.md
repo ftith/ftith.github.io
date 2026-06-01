@@ -134,5 +134,23 @@ git reset --hard 555d43d
 git push --force
 ```
 
+### History digging
+
+1. Grep information
+```
+git log -SFoo --since=2009.1.1 --until=2026.5.5 -- path_containing_change
+```
+
+2. Show graph with pretty format
+
+```
+git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+git lg
+```
+source: https://coderwall.com/p/euwpig/a-better-git-log
+
+
+
 ## Source
 - https://www.jvt.me/posts/2021/10/23/undo-force-push/
