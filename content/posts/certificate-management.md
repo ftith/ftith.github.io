@@ -1,7 +1,6 @@
 +++
 title = 'Certificate Management'
 date = 2026-11-02T21:55:43+01:00
-draft = true
 ShowReadingTime = true
 [editPost]
 URL = "https://github.com/ftith/ftith.github.io/edit/main/content"
