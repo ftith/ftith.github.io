@@ -2,7 +2,7 @@
 title = 'Ansible Data Structures'
 date = 2023-12-18T23:16:42+01:00
 ShowReadingTime = true
-tags = ['ansible', 'list', 'dictionary']
+tags = ['ansible']
 
 [editPost]
 URL = "https://github.com/ftith/ftith.github.io/edit/main/content"

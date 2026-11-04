@@ -1,7 +1,7 @@
 +++
 title = 'Git Submodules'
 date = 2025-10-25T18:58:31+02:00
-tags = ['git', 'submodule']
+tags = ['git']
 ShowReadingTime = true
 [editPost]
 URL = "https://github.com/ftith/ftith.github.io/edit/main/content"

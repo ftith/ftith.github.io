@@ -1,7 +1,7 @@
 +++
 title = 'Play steam games remotely using moonlight/sunshine or steam link and wake-on-lan'
 date = 2024-07-28T12:29:43+02:00
-tags = ['steam', 'remote', 'steamlink', 'wake-on-lan', 'wireguard']
+tags = ['steam', 'wake-on-lan', 'wireguard']
 ShowReadingTime = true
 [editPost]
 URL = "https://github.com/ftith/ftith.github.io/edit/main/content"

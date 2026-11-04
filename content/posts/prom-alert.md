@@ -2,7 +2,7 @@
 title = 'Create prometheus alert for absent metrics'
 date = 2025-01-03T11:42:06+01:00
 ShowReadingTime = true
-tags = ['prometheus','alert','grafana','promql']
+tags = ['prometheus','monitoring','grafana','promql']
 [editPost]
 URL = "https://github.com/ftith/ftith.github.io/edit/main/content"
 Text = "Suggest Changes"

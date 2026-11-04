@@ -3,7 +3,7 @@ title = 'Ansible Async Task'
 date = 2023-12-20T22:06:08+01:00
 draft = true
 ShowReadingTime = true
-tags = ['ansible', 'async', 'until', 'retry', 'asynchronous']
+tags = ['ansible']
 [editPost]
 URL = "https://github.com/ftith/ftith.github.io/edit/main/content"
 Text = "Suggest Changes"

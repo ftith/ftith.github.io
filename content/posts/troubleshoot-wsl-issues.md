@@ -1,7 +1,7 @@
 +++
 title = 'Troubleshoot Wsl Issues'
 date = 2024-04-21T09:35:43+02:00
-tags = ['wsl', 'ssh', 'mode', 'troubleshooting']
+tags = ['wsl', 'ssh']
 ShowReadingTime = true
 [editPost]
 URL = "https://github.com/ftith/ftith.github.io/edit/main/content"
