@@ -12,13 +12,13 @@ This page describe the usual git commands I used on daily, weekly or monthly bas
 
 ## Daily push
 
-```
+```bash
 git add -u
 git commit -m "<changes description>"
 git push [<remote>] [<branch>]
 ```
 e.g.
-```
+```bash
 git add -u
 git commit -m "add feature"
 git push origin main
@@ -38,7 +38,7 @@ By default, the UI of github (or gitea) give you 2 strategies to sync your featu
 
 [//]: <> (images are in static folder)
 ![gitea_base_merge.png](/img/posts/git/base_merge.png)
-```
+```bash
 git fetch
 git merge --no-ff origin/main
 git push origin dev
@@ -51,7 +51,7 @@ git push origin dev
 Use `--rebase` to avoid any unnecessary merge commits. 
 
 ![gitea_base_rebase.png](/img/posts/git/base_rebase.png)
-```
+```bash
 git pull --rebase origin main
 git push --force-with-lease origin dev
 ```
@@ -60,7 +60,7 @@ git push --force-with-lease origin dev
 ## Revert local changes 
 The following commands can be used when your changes have not been pushed to remote yet.
 ### Rollback file
-```
+```bash
 ## Revert to a branch head
 git checkout <remote>/<branch> <filename>
 # e.g.
@@ -72,14 +72,14 @@ git checkout <hash> <filename>
 git checkout 072300df18a94f18077ca20a14224b5d99fee872 README.md
 ```
 ### Undo last commit (not pushed) without loss
-```
+```bash
 git reset --soft HEAD~1
 ```
 
 ## "Rewrite" history
 ### Change a single commit (`--fixup` option)
 #### Specific commit
-```
+```bash
 git add -u
 git log --oneline -3
 git commit --fixup c53146d
@@ -88,12 +88,12 @@ git push --force-with-lease
 ```
 
 #### Last commit
-```
+```bash
 git add -u && git commit --fixup $(git log --oneline -n1 --pretty=format:"%h")
 ```
 
 ### Reorder commits
-```
+```bash
 git rebase -i HEAD~5
 # use command ':m+' to move up line 
 # use command ':m-2' to move down line
@@ -102,7 +102,7 @@ git push --force-with-lease
 ```
 
 ### Rebase interactive
-```
+```bash
 git rebase -i HEAD~5
 + set 'edit' to commit
 + edit in files
@@ -116,20 +116,20 @@ git push --force-with-lease
 You can get it either
 - via the UI in github (or gitea)
 - either in the log of your force push
-```
+```bash
 git push --force-with-lease
 [...]
 555d43d...b1f1ca4 dev -> dev (forced update)
 [...]
 ```
 - either from the reflog
-```
+```bash
 git reflog refs/remotes/origin/dev
 b1f1ca4 (HEAD -> dev, origin/dev) refs/remotes/origin/dev@{0}: update by push
 555d43d refs/remotes/origin/dev@{1}: update by push
 ```
 2. Reset branch using the old hash commit
-```
+```bash
 git reset --hard 555d43d
 git push --force
 ```
@@ -137,13 +137,13 @@ git push --force
 ### History digging
 
 1. Grep information
-```
+```bash
 git log -SFoo --since=2009.1.1 --until=2026.5.5 -- path_containing_change
 ```
 
 2. Show graph with pretty format
 
-```
+```bash
 git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 git lg

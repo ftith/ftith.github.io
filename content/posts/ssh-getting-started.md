@@ -10,22 +10,22 @@ appendFilePath = true
 +++
 
 ## Generate key
-```
+```bash
 ssh-keygen -t ed25519 -C "your_email@example.com"
 ```
 
 ## Copy key to server
-```
+```bash
 ssh-copy-id -i .ssh/id_ed25519.pub <server_name>
 ```
 
 ## Connect to server
-```
+```bash
 ssh -i ~/.ssh/id_ed25519 <user>@<server_name>
 ```
 
 ## Avoid retyping passphrase on each new connection
-```
+```bash
 eval $(ssh-agent -s)
 ssh-add /mnt/c/Users/f.tith/.ssh/id_ed25519
 ```

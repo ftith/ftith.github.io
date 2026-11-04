@@ -10,7 +10,7 @@ appendFilePath = true
 +++
 
 ## Clone parent project with submodules
-```
+```bash
 # Pull directly submodules on parent clone
 git clone --recurse-submodules https://github.com/ftith/ftith.github.io.git
 
@@ -19,11 +19,11 @@ git submodule update --init --recursive
 ```
 
 ## Add/Create submodule
-```
+```bash
 git submodule add https://github.com/adityatelange/hugo-PaperMod.git themes/PaperMod
 ```
 results to in your `.gitmodules`:
-```
+```toml
 [submodule "themes/PaperMod"]
 	path = themes/PaperMod
 	url = https://github.com/adityatelange/hugo-PaperMod.git
@@ -31,14 +31,14 @@ results to in your `.gitmodules`:
 You can also use **relative** path for submodule to inherit its parent's connection method (ssh or https).
 
 If you change directly the `.gitmodules` files, you need to run
-```
+```bash
 git submodule sync 
 ```
 
 
 ## Update submodules
 ### Update all submodules
-```
+```bash
 # Update the local submodule to detached HEAD (if you were working on local branch, you can just switch back to it)
 $ git submodule update 
 
@@ -50,7 +50,7 @@ $ git submodule update --remote --rebase/--merge
 ```
 
 ### Update one submodule
-```
+```bash
 git submodule update --rebase --remote -- <submodule_path>
 # e.g.
 git submodule update --rebase --remote -- themes/PaperMod
@@ -61,7 +61,7 @@ git config -f .gitmodules submodule.DbConnector.branch stable
 
 ## Working on submodules
 ### Push submodule changes
-```
+```bash
 # (from submodule path)
 cd <submodule_folder>
 git checkout <branch_name>
@@ -77,7 +77,7 @@ git push --recurse-submodules=on-demand
 
 ## Check current submodules commit
 At least 3 different ways to check the current commit on which your submodules are:
-```sh
+```bash
 $ git submodule status
 +b288ede80cbd70151e2f07f2e09ad6258e64f7fa themes/PaperMod (v8.0~70)
 

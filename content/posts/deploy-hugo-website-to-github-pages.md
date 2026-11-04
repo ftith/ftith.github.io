@@ -20,7 +20,7 @@ Sources:
 ## Local setup
 ### Create a new hugo website
 This command will generate a template for hugo project. By default it will use .toml extension for the configuration file. You can also use .yaml extension by adding `--config hugo.yaml` to the first command.
-```
+```bash
 # create a hugo template directory
 hugo new site github_pages
 cd github_pages
@@ -31,7 +31,7 @@ git init
 ### Add a theme
 There multiple methods described in [Papermod Theme Installation](https://adityatelange.github.io/hugo-PaperMod/posts/papermod/papermod-installation)
 but I would go with submodule method since it will be easier to handle the incoming future changes.
-```
+```bash
 # add the theme as submodule
 git submodule add --depth=1 https://github.com/adityatelange/hugo-PaperMod.git themes/PaperMod
 git submodule update --init --recursive
@@ -40,13 +40,13 @@ git submodule update --init --recursive
 echo "theme = 'PaperMod'" >> hugo.toml
 ```
 ### Start the server locally
-```
+```bash
 hugo server -D
 ```
 You can now see your website locally at [http://localhost:1313/](http://localhost:1313/)
 
 ### (Optional) Add a post
-```
+```bash
 hugo new content posts/deploy-hugo-website-to-github-pages.md
 ```
 ## Github pages setup
@@ -59,7 +59,7 @@ Create a new repository on [github.com/new](https://github.com/new) with your us
 Go the `settings/pages` of your github repository e.g. `https://github.com/<username>/<username>/settings/pages` and change the Source to GitHub Actions
 
 Then on your local repository, run:
-```
+```bash
 git remote add origin git@github.com:<username>/<username>.github.io.git
 sed -i 's|example.org|<username>.github.io|g' hugo.toml
 ```
@@ -67,7 +67,7 @@ sed -i 's|example.org|<username>.github.io|g' hugo.toml
 
 ### Create the workflow
 Locally, create a new file `.github/workflows/hugo.yaml` with the following content:
-```
+```yaml
 # Sample workflow for building and deploying a Hugo site to GitHub Pages
 name: Deploy Hugo site to Pages
 
@@ -149,7 +149,7 @@ jobs:
 ```
 
 ### Push 
-```
+```bash
 git branch -M main
 git add .
 git commit -m "Initial commit"

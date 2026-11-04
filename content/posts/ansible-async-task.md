@@ -11,7 +11,7 @@ appendFilePath = true
 +++
 
 By default Ansible runs tasks synchronously, but you might need 
-```
+```yaml
 - hosts: localhost
   gather_facts: false
   tasks:

@@ -11,7 +11,7 @@ appendFilePath = true
 
 ## Setup openssh (prerequisites)
 Before using ansible to manage windows, make sure that openssh is installed and enabled. If not, you can use this powershell script to do so:
-```
+```powershell
 $sshServer = Get-WindowsCapability -Online | Where-Object Name -like 'OpenSSH.Server*'
 
 if ($sshServer.State -ne 'Installed') {
@@ -47,7 +47,7 @@ Write-Host "OpenSSH setup completed."
 ```
 
 ## Run one command
-```
+```bash
 ansible -m win_shell -a "hostname" win_group
 ```
 
@@ -55,12 +55,12 @@ That's it!
 
 ## Playbook exemples to update your windows hosts configuration
 ### Setup autologon
-```
+```bash
 ansible-playbook setup_windows.yaml --tags=autologon
 ```
 
 Playbook `setup_windows.yaml`:
-```
+```yaml
 - name: Setup aulogon
   hosts: win_group
   strategy: free

@@ -13,7 +13,7 @@ appendFilePath = true
 The goal of this article is to build and release python package using [uv](https://docs.astral.sh/uv/guides/package/) (for building and publishing) and [github actions](https://docs.github.com/en/actions/get-started/understanding-github-actions) (for automation).
 
 ### Build and publish
-```
+```yaml
 name: Package
 on:
   push:
@@ -40,7 +40,7 @@ jobs:
 ```
 
 ### [Optional] Deploy to server
-```
+```yaml
 jobs:
   deploy:
     needs:
@@ -59,7 +59,7 @@ jobs:
 
 ### [Optional] Custom PyPI Package Registry
 If you are using custom PyPI Package Registry/Index (such as [gitea](https://docs.gitea.com/usage/packages/pypi)), you can use [`uv.index`](https://docs.astral.sh/uv/guides/package/#publishing-your-package) entry in `pyproject.toml`:
-```
+```toml
 [[tool.uv.index]]
 name = "gitea"
 url = "https://pypi.example.com/simple/"
@@ -67,7 +67,7 @@ publish-url = "https://gitea.example.com/api/packages/{owner}/pypi"
 explicit = true
 ```
 and then build with the following command by adding `--index gitea`:
-```
+```bash
 uv --native-tls publish --index gitea --token ${{ secrets.TWINE_PASSWORD }}
 ```
 
@@ -76,13 +76,13 @@ Using [semver](https://semver.org/) specification, you can fine-tune your releas
 
 #### - Static versioning
 In `pyproject.toml` the version is statically defined as follow:
-```
+```toml
 [project]
 name = "your-project"
 version = "0.1.0"
 ```
 You can then get your version using those two commands:
-```
+```bash
 $ uv version
 your-project 0.1.0
 # OR
@@ -90,7 +90,7 @@ $ uvx --from=toml-cli --native-tls toml get --toml-path=pyproject.toml project.v
 0.1.0
 ```
 You can bump version using `uv version --bump minor` for instance:
-```
+```bash
 uv version --bump minor
 Resolved 30 packages in 187ms
 Audited 28 packages in 0.71ms
@@ -99,7 +99,7 @@ your-project 0.1.0 => 0.2.0
 and pushing your updated `pyproject.toml`.
 
 Using github actions, you can specify the version to install:
-```
+```yaml
 name: Package
 on:
   workflow_dispatch:
@@ -146,7 +146,7 @@ jobs:
 
 #### - Dynamic versioning
 In `pyproject.toml` add: 
-```
+```toml
 [project]
 name = "your-project"
 dynamic = ["version"]  # Remove static version and add this line
@@ -162,7 +162,7 @@ source = "uv-dynamic-versioning" # specify a version Source
 fallback-version = "0.1.0" # (optional)
 ```
 You can bump version by creating a git **tag** and the built package version will be based on git tag:
-```
+```bash
 $ git tag v0.2.0
 $ uv build
 Building source distribution...

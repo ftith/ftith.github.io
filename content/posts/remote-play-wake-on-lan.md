@@ -101,7 +101,7 @@ flowchart LR
    1. Personally, I have a livebox so the setup is under `Configuration avancée > Réseau > DynDNS` ![dyndns.png](/img/posts/dyndns.png)
 1. Install wireguard on your raspberry using piVPN [[1]](#1-how-to-install-wireguard-on-raspberry-pi-using-pivpn-httpsraspberrytipscominstall-wireguard-raspberry-pi)
 1. Install wakeonlan command on raspberry pi [[3]](#3-how-to-send-a-magic-packet-httpswwwcybercitibiztipslinux-send-wake-on-lan-wol-magic-packetshtml)
-    ```
+    ```bash
     sudo apt install etherwake
     ```
 1. On your host device,
@@ -116,7 +116,7 @@ flowchart LR
 1. (Optional) To run only if your PC is in sleep mode:
    1. SSH to your raspberry pi using wireguard IP 
    1. Send magic package to your PC from raspberry pi
-    ```
+    ```bash
     wakeonlan <PC mac address>
     ```
 3. Start steamlink/moonlight on your client and connect to your PC

@@ -13,21 +13,21 @@ appendFilePath = true
 Since Ansible is based on Python. There are two main data structures in Ansible: list and dictionary. 
 ## List
 ### Initialization of a list
-```
+```yaml
   - name: Initialize an empty list
     set_fact:
       list: []
 ```
 Result is: `{"list": []}`
 ### Append element to a list
-```
+```yaml
   - name: Append element to list
     set_fact:
       list: "{{ list + [ 'element_1' ] }}"
 ```
 Result is: `{"list": ["element_1"]}`
 ### Append multiple elements to a list
-```
+```yaml
   - name: Get list of files in current directory
     shell: "ls"
     register: ls_files
@@ -42,7 +42,7 @@ Result is: `{"list": ["element_1", "list.yaml"]}` if your current directory is f
 - list.yaml
 - roles/
 ### Remove element from list
-```
+```yaml
   - name: Remove element from list
     set_fact:
       list: "{{ list | difference([ 'element_1' ]) }}"
@@ -50,7 +50,7 @@ Result is: `{"list": ["element_1", "list.yaml"]}` if your current directory is f
 Result is: `{"list": ["list.yaml"]}`
 ### Playbook summary
 Here are all steps in a single code block
-```
+```yaml
 # Usage: ansible-playbook -v list.yaml
 - name: "List manipulation"
   hosts: localhost
@@ -76,7 +76,7 @@ Here are all steps in a single code block
 ```
 ## Dictionary
 ### Initialization of a dictionary
-```
+```yaml
   - name: Initialize an empty dictionary
     set_fact:
       dict: {}
@@ -84,14 +84,14 @@ Here are all steps in a single code block
 Result is: `{"dict": {}},`
 ,
 ### Append element to a dictionary
-```
+```yaml
   - name: Append element to dictionary
     set_fact:
       dict: "{{ dict | combine( { 'key_name': 'some_value' } ) }}"
 ```
 Result is: `{"dict": {"key_name": "some_value"}}`
 ### Append multiple elements to a dictionary
-```
+```yaml
   - name: Get list of files and their size in current directory
     shell: "ls -lh | awk '{print $5,$NF}'"
     register: ls_files_size
@@ -106,7 +106,7 @@ Result is: ` {"dict": {"key_name": "some_value", "dict.yaml": "1.6K"}}` if your 
 - dict.yaml
 - roles/
 ### Remove element from dictionary
-```
+```yaml
   - name: Remove element from dictionary
     set_fact:
       dict: "{{ dict | ansible.utils.remove_keys('key_name')  }}"
@@ -115,7 +115,7 @@ Result is: ` {"dict": {"dict.yaml": "1.6K"}}`
  
 ### Playbook summary
 Here are all steps in a single code block
-```
+```yaml
 # Usage: ansible-playbook -v dict.yaml
 - name: "Dictionary manipulation"
   hosts: localhost

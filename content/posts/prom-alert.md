@@ -20,7 +20,7 @@ appendFilePath = true
 Make sure to test your query on `/explore` tab. 
 
 You can use metric `node_filesystem_avail_bytes` to detect specific mountpoint (e.g. `/mnt/data`) on specific instance (e.g `vm-name:9100`):
-```
+```conf
 node_filesystem_avail_bytes{instance="vm-name:9100",mountpoint="/mnt/data"}
 ```
 > ⚠ Any missing mountpoints for an instance might be due to default regexp value of the argument `--collector.filesystem.ignored-mount-points="^/(dev|proc|run|sys|mnt|media|var/lib/docker/.+)($|/)"`, so you might just remove the path you need in regexp value
@@ -29,17 +29,18 @@ If you need to detect missing metric, you can use vector `absent()`
 
 > ⚠ vector `absent()` cannot be used for multiple instances promQL regexp (or at least not the way you are expected). 
 > So instead of 
-> ```
+> ```yaml
 > absent(node_filesystem_avail_bytes{instance~="vm-name:9100|vm-name2:9100",mountpoint="/mnt/data"})
 > ```
 > you'll need to use `or` operator
-> ```
-> absent(node_filesystem_avail_bytes{instance="vm-name:9100",mountpoint="/mnt/data"}) or absent(node_filesystem_avail_bytes{instance="vm-name2:9100",mountpoint="/mnt/data"})
+> ```yaml
+> absent(node_filesystem_avail_bytes{instance="vm-name:9100",mountpoint="/mnt/data"}) 
+> or absent(node_filesystem_avail_bytes{instance="vm-name2:9100",mountpoint="/mnt/data"})
 > ```
 
 ### Alert rule
 When your expression is ready, you can define an alert rule in a new file e.g. `/etc/prometheus/alert_rules.yml`:
-```
+```yaml
 groups:
   - name: filesystem_alerts
     rules:
@@ -54,14 +55,14 @@ groups:
 ```
 
 and reference it in your `prometheus.yml` configuration file
-```
+```yaml
 rule_files:
   - "alert_rules.yml"
 ```
 
 # Setup a notification configuration in Alertmanager
 Here is an exemple of an alert configuration to send a notification to slack:
-```
+```yaml
 global:
   slack_api_url: "<SLACK_WEBHOOK_URL>"
 route:
@@ -90,7 +91,7 @@ receivers:
 `/etc/prometheus/alertmanager.yml`
 
 # Restart Prometheus and Alertmanager 
-```
+```bash
 systemctl restart prometheus
 systemctl restart prometheus-alertmanager
 ```
@@ -99,7 +100,7 @@ systemctl restart prometheus-alertmanager
 
 # Sanity checks
 1. To make sure that the syntax is correct you can run promtool on rule and on configuration file
-    ```
+    ```bash
     promtool check rules /etc/prometheus/alert_rules.yml
     promtool check config /etc/prometheus/prometheus.yml
     ```

@@ -11,22 +11,22 @@ appendFilePath = true
 
 ## Useful commands
 #### List deployed docker compose project
-```
+```bash
 docker compose ls
 ```
 #### Cleanup containers and volumes
-```
+```bash
 docker compose down -v
 ```
 
 #### Copy from one volume to another
-```
+```bash
  cp -rp /var/lib/docker/volumes/ftith_opensearch-data1/_data/ /var/lib/docker/volumes/opensearch_opensearch-data1/
 ```
 
 ## YAML anchor and aliases
 ### Simple 
-```
+```yaml
 x-common_env: &common_env
   env_file:
     - db.env
@@ -44,7 +44,7 @@ Due to this bug: https://github.com/docker/compose/issues/5621, you'll need a wo
 Given those 2 files:
 
 `db.yml`
-```
+```yaml
 x-restart_pol: &restart_pol
   restart: always
 services:
@@ -54,22 +54,22 @@ services:
 ```
 
 `app.yml`
-```
+```yaml
 services:
   frontend:
     <<: *restart_pol
     image: nginx:1.27.0-bookworm
 ```
 Instead of using this command:
-```
+```bash
 docker compose -f db.yml -f app.yml up -d
 ```
 you can use: 
-```
+```bash
 tail -n +2 app.yml | cat db.yml - | docker-compose.yml - up -d
 ```
 ## Build on the fly
-```
+```yaml
 services:
   loadbalancer:
     build:
@@ -81,14 +81,14 @@ services:
 command `docker-compose -f Composes\docker-compose.yml up --build`
 
 ## Override properties
-```
+```bash
 docker-compose -f Composes\docker-compose.yml -f Composes\docker-compose-aws.yml up
 ```
 
 
 ## Multiple or optional environment file (env_file)
 Since `Docker Compose version 2.24.0`, you can use multiple environments files (precedence is in order of decleration), or optional environment files using the `required` option.
-```
+```yaml
 services:
   service-name:
     env_file:
