@@ -8,6 +8,10 @@ git submodule update --init --recursive
 # Bump
 git submodule update --remote --merge
 ```
+On theme change: 
+1. Checkout submodule
+2. Update hugo.toml to reference the new theme
+3. Copy layouts from the new theme to readd mermaid extension
 ## Local commands
 ```
 # Start server locally

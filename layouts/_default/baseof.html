@@ -1,29 +1,26 @@
-{{/* This template extends the one in the "PaperMod" */}}
+{{/* This template extends the one in the "macchiato" */}}
 {{- if lt hugo.Version "0.97.1" }}
 {{- errorf "=> hugo v0.97.1 or greater is required for hugo-PaperMod to build " }}
 {{- end -}}
 
 <!DOCTYPE html>
-<html lang="{{ site.Language }}" dir="{{ .Language.LanguageDirection | default "auto" }}">
-
+<html lang="{{ .Site.LanguageCode | default "en" }}" data-theme="macchiato">
 <head>
-    {{- partial "head.html" . }}
+  {{ partial "head.html" . }}
 </head>
-
-<body class="
-{{- if (or (ne .Kind `page` ) (eq .Layout `archives`) (eq .Layout `search`)) -}}
-{{- print "list" -}}
-{{- end -}}
-{{- if eq site.Params.defaultTheme `dark` -}}
-{{- print " dark" }}
-{{- end -}}
-" id="top">
-    {{- partialCached "header.html" . .Page -}}
-    <main class="main">
-        {{- block "main" . }}{{ end }}
-    </main>
-    {{ partialCached "footer.html" . .Layout .Kind (.Param "hideFooter") (.Param "ShowCodeCopyButtons") -}}
+<body>
+  <a href="#main" class="visually-hidden">Skip to content</a>
+  {{ partial "header.html" . }}
+  <main id="main" class="site-main">
+    <div class="wrap{{ if .Site.Params.wideLayout }} wrap--wide{{ end }}">
+      {{ block "main" . }}{{ end }}
+    </div>
+  </main>
+  {{ partial "footer.html" . }}
+  <script src="{{ "js/main.js" | relURL }}" defer></script>
 </body>
+</html>
+
 
 </html>
 {{ if .Store.Get "hasMermaid" }}

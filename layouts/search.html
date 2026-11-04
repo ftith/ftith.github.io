@@ -1,0 +1,23 @@
+{{ define "main" }}
+<header class="post-header">
+  <h1>{{ .Title }}</h1>
+  {{ with .Content }}<div class="post-header__desc">{{ . }}</div>{{ end }}
+</header>
+
+<link rel="stylesheet" href="{{ "css/search.css" | relURL }}">
+<section class="site-search" id="site-search" data-index-url="{{ "index.json" | relURL }}">
+  <label class="site-search__label" for="search-input">Search posts</label>
+  <input
+    class="site-search__input"
+    id="search-input"
+    type="search"
+    placeholder="{{ .Params.placeholder | default "Type to search..." }}"
+    autocomplete="off"
+    aria-describedby="search-status"
+    disabled>
+  <p class="site-search__status" id="search-status" role="status" aria-live="polite">Loading search index...</p>
+  <ul class="site-search__results post-list" id="search-results" aria-label="Search results"></ul>
+</section>
+
+<script src="{{ "js/search.js" | relURL }}" defer></script>
+{{ end }}

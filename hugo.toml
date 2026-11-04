@@ -1,39 +1,64 @@
 baseURL = 'https://ftith.github.io/'
-languageCode = 'en-us'
-title = 'f.t'
-theme = 'PaperMod'
+languageCode = "en-us"
+title = "f.t"
+theme = "macchiato"
+
+[module]
+  [module.hugoVersion]
+    extended = true
+    min = "0.123.0"
+
+paginate = 6
+enableRobotsTXT = true
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
 
 [params]
-ShowPostNavLinks = true
-ShowBreadCrumbs = true
-ShowCodeCopyButtons = true
-ShowToc = true
-githubUrl = "https://github.com/ftith/ftith.github.io"
+  author = "f.t"
+  description = "This is my personal blog. I write about programming, technology, and other topics that interest me."
+  tagline = "Welcome! (╯°□°）╯︵ ┻━┻"
+  favicon = "favicon.svg"
+  wideLayout = false
 
-[params.homeInfoParams]
-Title = "Hi there 👋"
-Content = "Welcome to my blog. I am a DevOps Engineer working for a video game company."
+  [params.prompt]
+    user = "f.t"
+    # host = "stderr"
+    # path = "~/blog"
 
-#[[menu.main]]
-#identifier = "presentations"
-#name = "Presentations"
-#url = "/presentations/"
-#weight = 20
+  [params.social]
+    github = "https://github.com/ftith/ftith.github.io"
 
-[[menu.main]]
-identifier = "archives"
-name = "Archives"
-url = "/archives/"
-weight = 20
+[menu]
+  [[menu.main]]
+    name = "Posts"
+    url = "/posts/"
+    weight = 1
+  [[menu.main]]
+    name = "Tags"
+    url = "/tags/"
+    weight = 8
+  [[menu.main]]
+    name = "Archives"
+    url = "/archives/"
+    weight = 9
+  [[menu.main]]
+    name = "Search"
+    url = "/search/"
+    weight = 10
 
-[[menu.main]]
-identifier = "search"
-name = "Search"
-url = "/search/"
-weight = 20
-[outputs]
-home = [ "HTML", "RSS", "JSON" ]
+  [[menu.footer]]
+    name = "Home"
+    url = "/"
+    weight = 1
 
-[services]
-  [services.googleAnalytics]
-    ID = 'G-V672X69S59'
+[markup]
+  [markup.highlight]
+    noClasses = false
+    lineNos = false
+    style = "monokai"
+  [markup.goldmark.renderer]
+    unsafe = true
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 4

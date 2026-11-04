@@ -1,0 +1,59 @@
+{{ define "main" }}
+{{ $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}
+{{ if site.Params.ShowAllPagesInArchive }}
+  {{ $pages = site.RegularPages }}
+{{ end }}
+
+<style>
+  .archive-year { margin: 2rem 0 2.5rem; }
+  .archive-year__heading,
+  .archive-month__heading {
+    display: flex;
+    align-items: baseline;
+    gap: 0.65rem;
+    font-family: "IBM Plex Mono", monospace;
+  }
+  .archive-year__heading {
+    border-bottom: 1px solid var(--surface0);
+    padding-bottom: 0.6rem;
+  }
+  .archive-month { margin: 1.5rem 0 2rem 1rem; }
+  .archive-month__heading { color: var(--subtext1); }
+  .archive-count {
+    color: var(--overlay1);
+    font-size: 0.78em;
+    font-weight: 400;
+  }
+</style>
+
+<header class="post-header">
+  <p class="post-header__meta">{{ len $pages }} {{ if eq (len $pages) 1 }}post{{ else }}posts{{ end }}</p>
+  <h1>{{ .Title }}</h1>
+  {{ with .Content }}<div class="post-header__desc">{{ . }}</div>{{ end }}
+</header>
+
+{{ range $pages.GroupByPublishDate "2006" }}
+  {{ if ne .Key "0001" }}
+    {{ $year := .Key }}
+    <section class="archive-year" aria-labelledby="archive-year-{{ $year }}">
+      <h2 class="archive-year__heading" id="archive-year-{{ $year }}">
+        <a href="#archive-year-{{ $year }}">{{ $year }}</a>
+        <span class="archive-count">{{ len .Pages }}</span>
+      </h2>
+      {{ range .Pages.GroupByDate "January" }}
+        <section class="archive-month" aria-labelledby="archive-month-{{ $year }}-{{ .Key }}">
+          <h3 class="archive-month__heading" id="archive-month-{{ $year }}-{{ .Key }}">
+            <a href="#archive-month-{{ $year }}-{{ .Key }}">{{ .Key }}</a>
+            <span class="archive-count">{{ len .Pages }}</span>
+          </h3>
+          <ul class="post-list">
+            {{ range $index, $page := .Pages }}
+              {{ partial "post-card.html" (dict "page" $page "index" $index) }}
+            {{ end }}
+          </ul>
+        </section>
+      {{ end }}
+    </section>
+  {{ end }}
+{{ end }}
+{{ end }}
