@@ -1,6 +1,5 @@
 +++
 title = 'Positions (位置 - いち)'
-draft = true
 +++
 
 | Schema | Kana | Kanji | Romaji | Translation |
