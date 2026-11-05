@@ -1,0 +1,27 @@
+{{ define "main" }}
+<header class="post-header">
+  {{ $cards := sort (where site.RegularPages "Section" "cards") "Date" "Desc" }}
+  <p class="post-header__meta">{{ len $cards }} {{ if eq (len $cards) 1 }}card{{ else }}cards{{ end }}</p>
+  <h1>{{ .Title }}</h1>
+  {{ with .Content }}<div class="post-header__desc">{{ . }}</div>{{ end }}
+</header>
+
+<ul class="post-list">
+  {{ range $i, $card := $cards }}
+    {{ $accents := slice "var(--mauve)" "var(--blue)" "var(--peach)" "var(--green)" "var(--pink)" "var(--teal)" }}
+    {{ $accent := index $accents (mod $i (len $accents)) }}
+    <li>
+      <a class="post-card" href="{{ $card.RelPermalink }}" style="--accent: {{ $accent | safeCSS }};">
+        <h2 class="post-card__title">{{ $card.Title }}</h2>
+        {{ with $card.Description }}
+          <p class="post-card__excerpt">{{ . }}</p>
+        {{ else }}
+          <p class="post-card__excerpt">{{ $card.Summary | plainify | truncate 140 }}</p>
+        {{ end }}
+      </a>
+    </li>
+  {{ else }}
+    <li style="color: var(--overlay1); font-family: 'IBM Plex Mono', monospace;">No Japanese cards yet.</li>
+  {{ end }}
+</ul>
+{{ end }}
