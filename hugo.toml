@@ -66,3 +66,7 @@ enableRobotsTXT = true
   [markup.tableOfContents]
     startLevel = 2
     endLevel = 4
+
+[services]
+  [services.googleAnalytics]
+    ID = 'G-V672X69S59'
