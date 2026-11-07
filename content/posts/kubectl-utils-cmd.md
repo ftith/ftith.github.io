@@ -1,7 +1,6 @@
 +++
 title = 'Kubectl Utils Cmd'
 date = 2026-11-07T10:25:44+01:00
-draft = true
 ShowReadingTime = true
 [editPost]
 URL = "https://github.com/ftith/ftith.github.io/edit/main/content"
