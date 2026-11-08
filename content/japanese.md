@@ -4,4 +4,4 @@ layout = "japanese"
 url = "/japanese/"
 +++
 
-Japanese vocabulary cards.
+Japanese learning cards.

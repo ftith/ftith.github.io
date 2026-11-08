@@ -1,5 +1,5 @@
 +++
-title = 'Positions (位置 - いち)'
+title = 'Positions (位置 / いち)'
 date = 2026-11-05T18:29:23+01:00
 category = 'vocabulary'
 +++

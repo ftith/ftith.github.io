@@ -1,5 +1,5 @@
 +++
-title = 'Interrogative Words (疑問詞-ぎもんし)'
+title = 'Interrogative Words (疑問詞 / ぎもんし)'
 category = 'grammar'
 +++
 
