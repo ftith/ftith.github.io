@@ -1,5 +1,7 @@
 +++
 title = 'Particles (助詞-じょし)'
+date = 2026-11-05T20:03:44+01:00
+category = 'grammar'
 +++
 
  | Kana | Romaji | Explanation | Example |
