@@ -2,7 +2,7 @@
 title = 'Docker Compose Tips'
 date = 2023-12-20T22:34:17+01:00
 ShowReadingTime = true
-tags = ['docker', 'compose', 'docker compose', 'yaml']
+tags = ['docker', 'docker compose']
 [editPost]
 URL = "https://github.com/ftith/ftith.github.io/edit/main/content"
 Text = "Suggest Changes"

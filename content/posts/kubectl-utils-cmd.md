@@ -2,6 +2,7 @@
 title = 'Kubectl Utils Cmd'
 date = 2026-11-07T10:25:44+01:00
 ShowReadingTime = true
+tags = ['kubectl', 'kubernetes']
 [editPost]
 URL = "https://github.com/ftith/ftith.github.io/edit/main/content"
 Text = "Suggest Changes"

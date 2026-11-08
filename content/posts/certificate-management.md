@@ -2,6 +2,7 @@
 title = 'Certificate Management'
 date = 2026-11-02T21:55:43+01:00
 ShowReadingTime = true
+tags = ['certificate', 'openssl']
 [editPost]
 URL = "https://github.com/ftith/ftith.github.io/edit/main/content"
 Text = "Suggest Changes"
