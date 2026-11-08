@@ -1,6 +1,5 @@
 +++
-title = 'Dates (日付 / ひづけ) '
-draft = true
+title = 'Dates (日付 / ひづけ)'
 date = 2026-11-08T16:29:35+01:00
 category = "vocabulary"
 +++
