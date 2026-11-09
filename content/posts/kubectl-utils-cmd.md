@@ -92,6 +92,9 @@ kubectl taint nodes <node> <key>-
 # Mark a node unschedulable for maintenance
 kubectl cordon <node>
 
+# Add a role to node
+kubectl label node <node> node-role.kubernetes.io/<role>=
+
 # Evict eligible pods and prepare a node for maintenance
 kubectl drain <node> --ignore-daemonsets
 
